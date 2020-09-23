@@ -2,6 +2,20 @@
 - hosts: prod
   become: true
   tasks:
+
+  - name: Update all Ubuntu packages
+    apt:
+      upgrade: "dist"
+    when: ansible_distribution == 'Ubuntu'
+
+  - name: Install required Ubuntu packages
+    apt:
+      name: "{{ packages }}"
+      state: present
+    vars:
+      packages:
+        - openjdk-8-jdk
+
   - name: Install prerequisites for Docker repository
     apt:
       name: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg2', 'software-properties-common']
