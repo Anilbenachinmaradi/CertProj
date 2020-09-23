@@ -1,0 +1,5 @@
+Selenium_test/**
+chromedriver.exe
+selenium.jar
+selenium-server-standalone-3.141.59.jar
+testng-6.14.3.jar
